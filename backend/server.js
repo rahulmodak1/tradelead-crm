@@ -8,7 +8,7 @@ const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users");
 const teamRoutes = require("./routes/team");
 const followUpRoutes = require("./routes/followUps");
-const quotationRoutes = require("./routes/quotations");
+// const quotationRoutes = require("./routes/quotations");
 const { seedDefaultAdmin } = require("./utils/seedAdmin");
 
 const app = express();
@@ -21,7 +21,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/team", teamRoutes);
 app.use("/api/leads", leadRoutes);
 app.use("/api/follow-ups", followUpRoutes);
-app.use("/api/quotations", quotationRoutes);
+// app.use("/api/quotations", quotationRoutes);
 
 async function connectDB() {
   try {

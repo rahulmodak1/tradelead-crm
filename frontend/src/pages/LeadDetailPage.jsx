@@ -16,7 +16,7 @@ import CommunicationButtons from '../components/leads/detail/CommunicationButton
 import AssignLeadSelect from '../components/leads/AssignLeadSelect';
 import FollowUpSection from '../components/leads/detail/FollowUpSection';
 import ActivityTimeline, { ActivityTimelineHeader } from '../components/leads/detail/ActivityTimeline';
-import QuoteModal from '../components/leads/QuoteModal';
+// import QuoteModal from '../components/leads/QuoteModal';
 
 const DetailField = ({ icon: Icon, label, value, mono = false }) => (
   <div className="space-y-1">
@@ -53,7 +53,7 @@ const LeadDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const [showQuoteModal, setShowQuoteModal] = useState(false);
+  // const [showQuoteModal, setShowQuoteModal] = useState(false);
   const [statusUpdating, setStatusUpdating] = useState(false);
 
   const cachedLead = useMemo(
@@ -212,11 +212,11 @@ const LeadDetailPage = () => {
                 <option key={s} value={s}>{s}</option>
               ))}
             </select>
-            {canCreateQuote && (
+            {/* {canCreateQuote && (
               <button onClick={() => setShowQuoteModal(true)} className="btn-ghost">
                 <Document size={14} /> Create Quotation
               </button>
-            )}
+            )} */}
             <button onClick={() => setModalOpen(true)} className="btn-ghost">
               <Pencil size={14} /> Edit
             </button>
@@ -322,9 +322,9 @@ const LeadDetailPage = () => {
         lead={activeLead}
       />
 
-      {showQuoteModal && (
+      {/* {showQuoteModal && (
         <QuoteModal quote={null} onClose={() => setShowQuoteModal(false)} initialLeadId={id} />
-      )}
+      )} */}
     </div>
   );
 };
