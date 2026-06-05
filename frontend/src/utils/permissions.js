@@ -34,3 +34,28 @@ export function roleBadgeClass(role) {
       return 'bg-emerald-500/15 text-emerald-400 border-emerald-500/20';
   }
 }
+
+// Quotation permissions
+export function canCreateQuotation(user) {
+  return user?.role === 'Admin' || user?.role === 'Manager' || user?.role === 'Sales Executive';
+}
+
+export function canViewQuotation(user) {
+  return user?.role === 'Admin' || user?.role === 'Manager' || user?.role === 'Sales Executive';
+}
+
+export function canEditQuotation(user) {
+  return user?.role === 'Admin' || user?.role === 'Manager' || user?.role === 'Sales Executive';
+}
+
+export function canDeleteQuotation(user) {
+  return user?.role === 'Admin' || user?.role === 'Manager';
+}
+
+export function canSendQuotation(user) {
+  return user?.role === 'Admin' || user?.role === 'Manager' || user?.role === 'Sales Executive';
+}
+
+export function canConvertQuotation(user) {
+  return user?.role === 'Admin' || user?.role === 'Manager' || user?.role === 'Sales Executive';
+}

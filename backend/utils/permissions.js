@@ -44,6 +44,31 @@ function actorFromUser(user) {
   };
 }
 
+// Quotation permissions
+function canCreateQuotation(user) {
+  return user.role === ROLES.ADMIN || user.role === ROLES.MANAGER || user.role === ROLES.SALES;
+}
+
+function canViewQuotation(user) {
+  return user.role === ROLES.ADMIN || user.role === ROLES.MANAGER || user.role === ROLES.SALES;
+}
+
+function canEditQuotation(user) {
+  return user.role === ROLES.ADMIN || user.role === ROLES.MANAGER || user.role === ROLES.SALES;
+}
+
+function canDeleteQuotation(user) {
+  return user.role === ROLES.ADMIN || user.role === ROLES.MANAGER;
+}
+
+function canSendQuotation(user) {
+  return user.role === ROLES.ADMIN || user.role === ROLES.MANAGER || user.role === ROLES.SALES;
+}
+
+function canConvertQuotation(user) {
+  return user.role === ROLES.ADMIN || user.role === ROLES.MANAGER || user.role === ROLES.SALES;
+}
+
 module.exports = {
   ROLES,
   canViewAllLeads,
@@ -51,6 +76,12 @@ module.exports = {
   canAssignLeads,
   canDeleteLeads,
   canSyncTradeIndia,
+  canCreateQuotation,
+  canViewQuotation,
+  canEditQuotation,
+  canDeleteQuotation,
+  canSendQuotation,
+  canConvertQuotation,
   buildLeadQuery,
   canAccessLead,
   actorFromUser,

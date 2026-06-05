@@ -5,12 +5,15 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import DashboardPage from './pages/DashboardPage';
 import LeadsPage from './pages/LeadsPage';
 import LeadDetailPage from './pages/LeadDetailPage';
+import QuotesPage from './pages/QuotesPage';
+import QuoteDetailPage from './pages/QuoteDetailPage';
 import LoginPage from './pages/LoginPage';
 import TeamPage from './pages/TeamPage';
 import FollowUpsPage from './pages/FollowUpsPage';
 import { AuthProvider } from './hooks/useAuth';
 import { LeadsProvider, useLeads } from './hooks/useLeads';
 import { TeamProvider } from './hooks/useTeam';
+import { QuotesProvider } from './hooks/useQuotes';
 import {
   AnalyticsPage, MessagesPage,
   ReportsPage, TargetsPage, SettingsPage, HelpPage
@@ -29,6 +32,8 @@ const AppShell = () => {
         <Route path="/" element={<DashboardPage />} />
         <Route path="/leads" element={<LeadsPage />} />
         <Route path="/leads/:id" element={<LeadDetailPage />} />
+        <Route path="/quotes" element={<QuotesPage />} />
+        <Route path="/quotes/:id" element={<QuoteDetailPage />} />
         <Route path="/team" element={<TeamPage />} />
         <Route path="/follow-ups" element={<FollowUpsPage />} />
         <Route path="/analytics" element={<AnalyticsPage />} />
@@ -53,7 +58,9 @@ const App = () => (
           <ProtectedRoute>
             <TeamProvider>
               <LeadsProvider>
-                <AppShell />
+                <QuotesProvider>
+                  <AppShell />
+                </QuotesProvider>
               </LeadsProvider>
             </TeamProvider>
           </ProtectedRoute>

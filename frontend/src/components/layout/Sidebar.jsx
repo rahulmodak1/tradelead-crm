@@ -3,7 +3,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard, Users, TrendingUp, Calendar, Settings,
   ChevronRight, Zap, HelpCircle, X, BarChart3,
-  MessageSquare, FileText, Target, Loader2, Shield, LogOut,
+  MessageSquare, FileText, Target, Loader2, Shield, LogOut, File,
 } from 'lucide-react';
 import { useLeads } from '../../hooks/useLeads';
 import { useAuth } from '../../hooks/useAuth';
@@ -17,6 +17,7 @@ const NAV_ITEMS = [
       { id: 'dashboard', to: '/', icon: LayoutDashboard, label: 'Dashboard' },
       { id: 'leads', to: '/leads', icon: Users, label: 'Leads', countKey: 'total' },
       { id: 'hot-leads', to: '/leads?status=Hot', icon: TrendingUp, label: 'Hot Leads', countKey: 'hot' },
+      { id: 'quotes', to: '/quotes', icon: File, label: 'Quotations' },
       { id: 'follow-ups', to: '/follow-ups', icon: Calendar, label: 'Follow-ups', countKey: 'followUp' },
       { id: 'team', to: '/team', icon: Shield, label: 'Team' },
       { id: 'analytics', to: '/analytics', icon: BarChart3, label: 'Analytics' },

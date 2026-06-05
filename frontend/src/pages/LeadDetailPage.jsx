@@ -4,18 +4,19 @@ import { format } from 'date-fns';
 import {
   ArrowLeft, Pencil, Trash2, AlertTriangle,
   User, Phone, Mail, Building2, MapPin, Package, FileText,
-  Globe, Calendar, RefreshCw,
+  Globe, Calendar, RefreshCw, FileText as Document,
 } from 'lucide-react';
 import { useLeads } from '../hooks/useLeads';
 import { useTeam } from '../hooks/useTeam';
 import { useAuth } from '../hooks/useAuth';
-import { canAssignLeads, canDeleteLeads } from '../utils/permissions';
+import { canAssignLeads, canDeleteLeads, canCreateQuotation } from '../utils/permissions';
 import StatusBadge, { STATUS_OPTIONS } from '../components/ui/StatusBadge';
 import LeadModal from '../components/leads/LeadModal';
 import CommunicationButtons from '../components/leads/detail/CommunicationButtons';
 import AssignLeadSelect from '../components/leads/AssignLeadSelect';
 import FollowUpSection from '../components/leads/detail/FollowUpSection';
 import ActivityTimeline, { ActivityTimelineHeader } from '../components/leads/detail/ActivityTimeline';
+import QuoteModal from '../components/leads/QuoteModal';
 
 const DetailField = ({ icon: Icon, label, value, mono = false }) => (
   <div className="space-y-1">
@@ -46,11 +47,13 @@ const LeadDetailPage = () => {
   const { user } = useAuth();
   const canAssign = canAssignLeads(user);
   const canDelete = canDeleteLeads(user);
+  const canCreateQuote = canCreateQuotation(user);
 
   const [lead, setLead] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [showQuoteModal, setShowQuoteModal] = useState(false);
   const [statusUpdating, setStatusUpdating] = useState(false);
 
   const cachedLead = useMemo(
@@ -209,6 +212,11 @@ const LeadDetailPage = () => {
                 <option key={s} value={s}>{s}</option>
               ))}
             </select>
+            {canCreateQuote && (
+              <button onClick={() => setShowQuoteModal(true)} className="btn-ghost">
+                <Document size={14} /> Create Quotation
+              </button>
+            )}
             <button onClick={() => setModalOpen(true)} className="btn-ghost">
               <Pencil size={14} /> Edit
             </button>
@@ -313,6 +321,10 @@ const LeadDetailPage = () => {
         onSave={handleSave}
         lead={activeLead}
       />
+
+      {showQuoteModal && (
+        <QuoteModal quote={null} onClose={() => setShowQuoteModal(false)} initialLeadId={id} />
+      )}
     </div>
   );
 };
