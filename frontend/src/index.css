@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface text-gray-100 font-sans antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249,115,22,0.06) 0%, transparent 60%);
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-600;
+  }
+}
+
+@layer components {
+  .stat-card {
+    @apply bg-surface-card border border-surface-border rounded-2xl p-5 hover:border-brand-700 transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-brand-500 hover:bg-brand-600 text-white font-semibold px-4 py-2 rounded-xl transition-all duration-200 flex items-center gap-2 text-sm shadow-glow hover:shadow-glow-lg;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent hover:bg-surface-hover text-gray-400 hover:text-gray-100 font-medium px-4 py-2 rounded-xl transition-all duration-200 flex items-center gap-2 text-sm border border-transparent hover:border-surface-border;
+  }
+
+  .input-field {
+    @apply bg-surface-hover border border-surface-border text-gray-100 placeholder-gray-500 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/30 transition-all duration-200 w-full;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-gray-100 hover:bg-surface-hover transition-all duration-200 text-sm font-medium cursor-pointer;
+  }
+
+  .sidebar-link.active {
+    @apply text-brand-400 bg-brand-500/10 border border-brand-500/20;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-new {
+    @apply badge bg-blue-500/15 text-blue-400 border border-blue-500/20;
+  }
+
+  .badge-hot {
+    @apply badge bg-red-500/15 text-red-400 border border-red-500/20;
+  }
+
+  .badge-followup {
+    @apply badge bg-amber-500/15 text-amber-400 border border-amber-500/20;
+  }
+
+  .badge-closed {
+    @apply badge bg-emerald-500/15 text-emerald-400 border border-emerald-500/20;
+  }
+
+  .table-row-hover {
+    @apply hover:bg-surface-hover transition-colors duration-150;
+  }
+}
+
+/* Stagger animation for table rows */
+.animate-row {
+  opacity: 0;
+  animation: slideUp 0.35s ease forwards;
+}
+
+.animate-row:nth-child(1)  { animation-delay: 0.05s }
+.animate-row:nth-child(2)  { animation-delay: 0.08s }
+.animate-row:nth-child(3)  { animation-delay: 0.11s }
+.animate-row:nth-child(4)  { animation-delay: 0.14s }
+.animate-row:nth-child(5)  { animation-delay: 0.17s }
+.animate-row:nth-child(6)  { animation-delay: 0.20s }
+.animate-row:nth-child(7)  { animation-delay: 0.23s }
+.animate-row:nth-child(8)  { animation-delay: 0.26s }
+.animate-row:nth-child(9)  { animation-delay: 0.29s }
+.animate-row:nth-child(10) { animation-delay: 0.32s }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
