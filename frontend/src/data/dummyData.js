@@ -156,3 +156,12 @@ export const dummyLeads = [
     createdAt: '2025-02-12T11:00:00Z',
   },
 ];
+export const statsData = {
+  totalLeads: 0,
+  hotLeads: 0,
+  followUps: 0,
+  closedDeals: 0,
+  dueToday: 0,
+  overdue: 0,
+  upcoming: 0,
+};

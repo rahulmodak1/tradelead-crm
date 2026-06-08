@@ -81,9 +81,8 @@ async function fetchTradeIndiaLeadsFromAPI() {
     );
   }
 
-  const toDate = new Date();
-  const fromDate = new Date();
-  fromDate.setDate(fromDate.getDate() - 30);
+ const toDate = new Date();
+const fromDate = new Date(Date.now() - 24 * 60 * 60 * 1000);
 
   const response = await axios.get(TRADEINDIA_URL, {
     params: {
@@ -114,6 +113,9 @@ async function fetchTradeIndiaLeadsFromAPI() {
   return inquiries
     .map(mapInquiryToLead)
     .filter((lead) => normalizePhone(lead.phone).length >= 10);
+    
+    console.log("FROM:", formatDate(fromDate));
+console.log("TO:", formatDate(toDate));
 }
 
 module.exports = {

@@ -5,8 +5,10 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import DashboardPage from './pages/DashboardPage';
 import LeadsPage from './pages/LeadsPage';
 import LeadDetailPage from './pages/LeadDetailPage';
+import HotLeadsPage from './pages/HotLeadsPage';
 // import QuotesPage from './pages/QuotesPage';
 // import QuoteDetailPage from './pages/QuoteDetailPage';
+import QuotesPage from './pages/QuotesPage';
 import LoginPage from './pages/LoginPage';
 import TeamPage from './pages/TeamPage';
 import FollowUpsPage from './pages/FollowUpsPage';
@@ -14,6 +16,7 @@ import { AuthProvider } from './hooks/useAuth';
 import { LeadsProvider, useLeads } from './hooks/useLeads';
 import { TeamProvider } from './hooks/useTeam';
 // import { QuotesProvider } from './hooks/useQuotes';
+<Route path="/quotations" element={<QuotesPage />} />
 import {
   AnalyticsPage, MessagesPage,
   ReportsPage, TargetsPage, SettingsPage, HelpPage
@@ -31,8 +34,9 @@ const AppShell = () => {
       <Routes>
         <Route path="/" element={<DashboardPage />} />
         <Route path="/leads" element={<LeadsPage />} />
+        <Route path="/hot-leads" element={<HotLeadsPage />} />
         <Route path="/leads/:id" element={<LeadDetailPage />} />
-        {/* <Route path="/quotes" element={<QuotesPage />} /> */}
+        <Route path="/quotes" element={<QuotesPage />} />
         {/* <Route path="/quotes/:id" element={<QuoteDetailPage />} /> */}
         <Route path="/team" element={<TeamPage />} />
         <Route path="/follow-ups" element={<FollowUpsPage />} />
@@ -42,6 +46,7 @@ const AppShell = () => {
         <Route path="/targets" element={<TargetsPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/help" element={<HelpPage />} />
+        <Route path="/quotations" element={<QuotesPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Layout>

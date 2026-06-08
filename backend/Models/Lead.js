@@ -83,4 +83,6 @@ LeadSchema.index({ followUpDate: 1, status: 1 });
 LeadSchema.index({ assignedTo: 1, followUpDate: 1 });
 LeadSchema.index({ createdAt: -1 });
 
-module.exports = mongoose.model("Lead", LeadSchema);
+module.exports =
+  mongoose.models.Lead ||
+  mongoose.model("Lead", LeadSchema);
