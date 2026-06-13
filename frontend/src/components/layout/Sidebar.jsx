@@ -7,6 +7,7 @@ import {
   Settings, HelpCircle, ChevronRight, Zap,
   Bell, X,
 } from 'lucide-react';
+import { useNavigate } from "react-router-dom";
 
 /**
  * NAV_ITEMS — each item uses `exact` pathname for matching.
@@ -50,11 +51,11 @@ const NAV_ITEMS = [
 const Sidebar = ({ isOpen, onClose }) => {
   // PART 2: read exact pathname — never use .includes() for active matching
   const { pathname } = useLocation();
-
+const navigate = useNavigate();
 const handleLogout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
-  window.location.href = "/login";
+  navigate("/login");
 };
   return (
     <>
