@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
+import { LogOut } from "lucide-react";
 import {
   LayoutDashboard, Users, Flame, RefreshCw,
   BarChart3, MessageSquare, FileText, Target,
@@ -50,6 +51,11 @@ const Sidebar = ({ isOpen, onClose }) => {
   // PART 2: read exact pathname — never use .includes() for active matching
   const { pathname } = useLocation();
 
+const handleLogout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  window.location.href = "/login";
+};
   return (
     <>
       {/* Mobile overlay */}
@@ -144,7 +150,13 @@ const Sidebar = ({ isOpen, onClose }) => {
               <p className="text-xs font-semibold text-gray-200 truncate">Admin User</p>
               <p className="text-[10px] text-gray-500 truncate">admin@tradeindia.com</p>
             </div>
-            <Bell size={14} className="text-gray-500 shrink-0" />
+        <button
+  onClick={handleLogout}
+  className="text-red-400 hover:text-red-300 shrink-0"
+  title="Logout"
+>
+  <LogOut size={16} />
+</button>
           </div>
         </div>
       </aside>
