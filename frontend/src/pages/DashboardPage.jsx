@@ -9,7 +9,7 @@ import { useLeads } from '../hooks/useLeads';
 import { statsData } from '../data/dummyData';
 import StatusBadge from '../components/ui/StatusBadge';
 import { format } from 'date-fns';
-
+import { useNavigate } from "react-router-dom";
 // ─── Clickable Stat Card ──────────────────────────────────────────────────────
 /**
  * PART 1: StatCard is now a clickable navigation element.
@@ -111,7 +111,7 @@ const DashboardPage = () => {
   const conversionRate = leads.length > 0
     ? Math.round(((statusCounts['Closed'] || 0) / leads.length) * 100)
     : 0;
-
+const navigate = useNavigate();
   return (
     <div className="p-4 lg:p-6 space-y-6 animate-fade-in">
 
@@ -279,7 +279,7 @@ const DashboardPage = () => {
             ) : recentLeads.map((lead, i) => (
            <div
   key={lead._id}
-  onClick={() => window.location.href = `/leads/${lead._id}`}
+ onClick={() => navigate(`/leads/${lead._id}`)}
   className="flex items-center gap-4 px-5 py-3.5 hover:bg-surface-hover transition-colors animate-row cursor-pointer"
   style={{ animationDelay: `${i * 0.06}s` }}
 >
