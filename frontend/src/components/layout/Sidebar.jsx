@@ -29,6 +29,7 @@ const NAV_ITEMS = [
       { path: '/follow-ups',   icon: RefreshCw,       label: 'Follow-ups', badge: null },
       { path: '/quotations',   icon: FileText,        label: 'Quotations', badge: null },
       { path: '/analytics',    icon: BarChart3,       label: 'Analytics' },
+      { path: '/team', icon: Users, label: 'Team' },
     ],
   },
   {
